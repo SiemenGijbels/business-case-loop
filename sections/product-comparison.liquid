@@ -1,0 +1,268 @@
+<link
+  rel="stylesheet"
+  href="{{ 'section-product-comparison.css' | asset_url }}"
+  media="print"
+  onload="this.media='all'">
+
+<div class="product-comparison">
+  {% for block in section.blocks %}
+    <div class="product-comparison-block">
+      <h3 class="product-comparison-block-title">Loop<br>{{ block.settings.product.title }}</h3>
+
+      <img
+        loading="lazy"
+        height="221"
+        width="235"
+        src="{{ block.settings.product.featured_image | img_url: 'master' }}"
+        alt="Loop {{ block.settings.product.title }}">
+
+      <h3 class="product-comparison-block-price">{{ block.settings.product.price | money }}</h3>
+
+      <h3 class="product-comparison-block-keyword">{{ block.settings.keyword }}</h3>
+      <p class="product-comparison-block-desc">{{ block.settings.description }}</p>
+
+      <a class="product-comparison-block-button button button--primary" href="{{ block.settings.product.url }}">Buy now</a>
+
+      <p>
+        <a class="learn-more" href="{{ block.settings.product.url }}">Learn more</a>
+      </p>
+    </div>
+  {% endfor %}
+
+  <hr class="divider">
+
+  {% for block in section.blocks %}
+    <div class="product-comparison-block product-comparison-block-padded">
+      <p class="product-comparison-block-reduction">up to<br>
+        <span class="noise-reduction-amount">{{ block.settings.dbreduction }}</span><br>
+        {% if block.settings.filtered %}filtered{% endif %}
+        noise reduction</p>
+      <hr class="divider divider-small">
+      <div class="reduction-desc">{{ block.settings.reductiondesc }}</div>
+    </div>
+  {% endfor %}
+
+  <hr class="divider">
+
+  {% for block in section.blocks %}
+    <div class="product-comparison-block product-comparison-block-padded">
+      <h4 class="comparison-subheading">Perfect for</h4>
+      {% if block.settings.img1 %}
+        <img
+          class="icon-perfect-for"
+          loading="lazy"
+          height="60"
+          width="60"
+          src="{{ block.settings.img1 | img_url: 'master' }}"
+          alt="{{ block.settings.img1desc }} icon">
+        <p class="label-perfect-for">{{ block.settings.img1desc }}</p>
+      {% endif %}
+      {% if block.settings.img2 %}
+        <img
+          class="icon-perfect-for"
+          loading="lazy"
+          height="60"
+          width="60"
+          src="{{ block.settings.img2 | img_url: 'master' }}"
+          alt="{{ block.settings.img2desc }} icon">
+        <p class="label-perfect-for">{{ block.settings.img2desc }}</p>
+      {% endif %}
+      {% if block.settings.img3 %}
+        <img
+          class="icon-perfect-for"
+          loading="lazy"
+          height="60"
+          width="60"
+          src="{{ block.settings.img3 | img_url: 'master' }}"
+          alt="{{ block.settings.img3desc }} icon">
+        <p class="label-perfect-for">{{ block.settings.img3desc }}</p>
+      {% endif %}
+      {% if block.settings.img4 %}
+        <img
+          class="icon-perfect-for"
+          loading="lazy"
+          height="60"
+          width="60"
+          src="{{ block.settings.img4 | img_url: 'master' }}"
+          alt="{{ block.settings.img4desc }} icon">
+        <p class="label-perfect-for">{{ block.settings.img4desc }}</p>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <hr class="divider">
+
+  {% for block in section.blocks %}
+    <div class="product-comparison-block product-comparison-block-padded">
+      <h4 class="comparison-subheading">Included</h4>
+
+      {% if block.settings.includes1 %}
+        <p class="label-includes-options">{{ block.settings.includes1 }}</p>
+      {% endif %}
+      {% if block.settings.includes2 %}
+        <p class="label-includes-options">{{ block.settings.includes2 }}</p>
+      {% endif %}
+
+      <hr class="divider divider-small">
+
+      <h4 class="comparison-subheading">Optional extras</h4>
+
+      {% if block.settings.optionalextras1 %}
+        <p class="label-includes-options">{{ block.settings.optionalextras1 }}</p>
+      {% endif %}
+      {% if block.settings.optionalextras2 %}
+        <p class="label-includes-options">{{ block.settings.optionalextras2 }}</p>
+      {% endif %}
+      {% if block.settings.optionalextras3 %}
+        <p class="label-includes-options">{{ block.settings.optionalextras3 }}</p>
+      {% endif %}
+      {% if block.settings.optionalextraslink != null %}
+        <p class="label-includes-options">
+          <a class="learn-more" href="{{ block.settings.optionalextraslink.url }}">Discover {{ block.settings.optionalextraslink.title }}</a>
+        </p>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <hr class="divider">
+
+  {% for block in section.blocks %}
+    <div class="product-comparison-block product-comparison-block-padded">
+      <h4 class="comparison-subheading">Product details</h4>
+      <img
+        class="product-details-img"
+        loading="lazy"
+        height="221"
+        width="235"
+        src="{{ block.settings.productdetailsimg | img_url: 'master' }}"
+        alt="Loop {{ block.settings.product.title }} details">
+    </div>
+  {% endfor %}
+
+  <hr class="divider">
+
+  {% for block in section.blocks %}
+    <div class="product-comparison-block">
+      <h3 class="product-comparison-block-title">Loop<br>{{ block.settings.product.title }}</h3>
+
+      <img
+        loading="lazy"
+        height="221"
+        width="235"
+        src="{{ block.settings.product.featured_image | img_url: 'master' }}"
+        alt="Loop {{ block.settings.product.title }}">
+
+      <h3 class="product-comparison-block-price">{{ block.settings.product.price | money }}</h3>
+
+      <a class="product-comparison-block-button button button--primary" href="{{ block.settings.product.url }}">Buy now</a>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+  {
+    "name": "Product comparison",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "text",
+            "id": "keyword",
+            "label": "Keyword"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+          },
+          {
+            "type": "text",
+            "id": "dbreduction",
+            "label": "dB reduction amount"
+          }, {
+            "type": "checkbox",
+            "id": "filtered",
+            "label": "Filtered noise reduction"
+          }, {
+            "type": "richtext",
+            "id": "reductiondesc",
+            "label": "Reduction description"
+          }, {
+            "type": "image_picker",
+            "id": "img1",
+            "label": "Icon 1"
+          }, {
+            "type": "text",
+            "id": "img1desc",
+            "label": "Icon 1 description"
+          }, {
+            "type": "image_picker",
+            "id": "img2",
+            "label": "Icon 2"
+          }, {
+            "type": "text",
+            "id": "img2desc",
+            "label": "Icon 2 description"
+          }, {
+            "type": "image_picker",
+            "id": "img3",
+            "label": "Icon 3"
+          }, {
+            "type": "text",
+            "id": "img3desc",
+            "label": "Icon 3 description"
+          }, {
+            "type": "image_picker",
+            "id": "img4",
+            "label": "Icon 4"
+          }, {
+            "type": "text",
+            "id": "img4desc",
+            "label": "Icon 4 description"
+          }, {
+            "type": "text",
+            "id": "includes1",
+            "label": "First 'Includes' item"
+          }, {
+            "type": "text",
+            "id": "includes2",
+            "label": "Second 'Includes' item"
+          }, {
+            "type": "text",
+            "id": "optionalextras1",
+            "label": "First optional extra"
+          }, {
+            "type": "text",
+            "id": "optionalextras2",
+            "label": "Second optional extra"
+          }, {
+            "type": "text",
+            "id": "optionalextras3",
+            "label": "Third optional extra"
+          }, {
+            "type": "product",
+            "id": "optionalextraslink",
+            "label": "Optional extras link"
+          }, {
+            "type": "image_picker",
+            "id": "productdetailsimg",
+            "label": "Product details image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product comparison"
+      }
+    ]
+  }
+{% endschema %}
