@@ -180,3 +180,8 @@
     position: relative;
     text-decoration: none;
 }
+
+.main-page-title.page-title.h0 {
+    font-family: 'Avantt';
+    font-weight: 700;
+}
