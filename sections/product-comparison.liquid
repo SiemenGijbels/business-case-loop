@@ -10,11 +10,38 @@
       <h3 class="product-comparison-block-title">Loop<br>{{ block.settings.product.title }}</h3>
 
       <img
+        class="product-img"
         loading="lazy"
         height="221"
         width="235"
-        src="{{ block.settings.product.featured_image | img_url: 'master' }}"
+        src="{{ block.settings.product.featured_image | image_url: width: 500 }}"
         alt="Loop {{ block.settings.product.title }}">
+
+      <div class="product-color-options">
+        {% comment %} Block code to get names of color values and let them link to the correct variant {% endcomment %}
+        {% for option in block.settings.product.options %}
+          {% if option == 'Color' %}
+            {% assign color = '' %}
+
+            {% for variant in block.settings.product.variants %}
+              {% capture color %}
+                {{ variant.option1 }}
+              {% endcapture %}
+
+              {% for value in block.settings.product.option.values %}
+                {% if variant.option1 == value %}
+                  {% assign color_swatch = variant.metafields.custom.color_swatch.value %}
+                {% endif %}
+              {% endfor %}
+
+              <a
+                href="{{ block.settings.product.url }}?variant={{ variant.id }}"
+                class="pill-swatch"
+                style="background-color: {{ color_swatch }};">{{ color }}</a>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
 
       <h3 class="product-comparison-block-price">{{ block.settings.product.price | money }}</h3>
 
@@ -53,7 +80,7 @@
           loading="lazy"
           height="60"
           width="60"
-          src="{{ block.settings.img1 | img_url: 'master' }}"
+          src="{{ block.settings.img1 | image_url: width: 120 }}"
           alt="{{ block.settings.img1desc }} icon">
         <p class="label-perfect-for">{{ block.settings.img1desc }}</p>
       {% endif %}
@@ -63,7 +90,7 @@
           loading="lazy"
           height="60"
           width="60"
-          src="{{ block.settings.img2 | img_url: 'master' }}"
+          src="{{ block.settings.img2 | image_url: width: 120 }}"
           alt="{{ block.settings.img2desc }} icon">
         <p class="label-perfect-for">{{ block.settings.img2desc }}</p>
       {% endif %}
@@ -73,7 +100,7 @@
           loading="lazy"
           height="60"
           width="60"
-          src="{{ block.settings.img3 | img_url: 'master' }}"
+          src="{{ block.settings.img3 | image_url: width: 120 }}"
           alt="{{ block.settings.img3desc }} icon">
         <p class="label-perfect-for">{{ block.settings.img3desc }}</p>
       {% endif %}
@@ -83,7 +110,7 @@
           loading="lazy"
           height="60"
           width="60"
-          src="{{ block.settings.img4 | img_url: 'master' }}"
+          src="{{ block.settings.img4 | image_url: width: 120 }}"
           alt="{{ block.settings.img4desc }} icon">
         <p class="label-perfect-for">{{ block.settings.img4desc }}</p>
       {% endif %}
@@ -134,7 +161,7 @@
         loading="lazy"
         height="221"
         width="235"
-        src="{{ block.settings.productdetailsimg | img_url: 'master' }}"
+        src="{{ block.settings.productdetailsimg | image_url: width: 500 }}"
         alt="Loop {{ block.settings.product.title }} details">
     </div>
   {% endfor %}
@@ -146,11 +173,38 @@
       <h3 class="product-comparison-block-title">Loop<br>{{ block.settings.product.title }}</h3>
 
       <img
+        class="product-img"
         loading="lazy"
         height="221"
         width="235"
-        src="{{ block.settings.product.featured_image | img_url: 'master' }}"
+        src="{{ block.settings.product.featured_image | image_url: width: 500 }}"
         alt="Loop {{ block.settings.product.title }}">
+
+      <div class="product-color-options">
+        {% comment %} Block code to get names of color values and let them link to the correct variant {% endcomment %}
+        {% for option in block.settings.product.options %}
+          {% if option == 'Color' %}
+            {% assign color = '' %}
+
+            {% for variant in block.settings.product.variants %}
+              {% capture color %}
+                {{ variant.option1 }}
+              {% endcapture %}
+
+              {% for value in block.settings.product.option.values %}
+                {% if variant.option1 == value %}
+                  {% assign color_swatch = variant.metafields.custom.color_swatch.value %}
+                {% endif %}
+              {% endfor %}
+
+              <a
+                href="{{ block.settings.product.url }}?variant={{ variant.id }}"
+                class="pill-swatch"
+                style="background-color: {{ color_swatch }};">{{ color }}</a>
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
 
       <h3 class="product-comparison-block-price">{{ block.settings.product.price | money }}</h3>
 
