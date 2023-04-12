@@ -26,10 +26,11 @@
     font-size: 32px;
     letter-spacing: -0.03em;
     text-transform: capitalize;
+    line-height: 96%;
 }
 
-.product-comparison-block-price {
-    line-height: 96%;
+.product-comparison-block-title {
+    margin-bottom: 5px;
 }
 
 .product-comparison-block-keyword, .product-comparison-block-desc {
@@ -43,11 +44,13 @@
 .product-comparison-block-keyword {
     font-weight: 700;
     color: #1E1E1E;
+    margin-bottom: 5px;
 }
 
 .product-comparison-block-desc {
     font-weight: 400;
     color: #757470;
+    margin-top: 0;
 }
 
 .product-comparison-block-button {
@@ -96,7 +99,7 @@
 .divider {
     width: 100%;
     background-color: black;
-    margin: 2.5em 0;
+    margin: 2em 0;
 }
 
 .divider-small {
@@ -128,7 +131,7 @@
     height: 60px;
     object-fit: contain;
     display: block;
-    margin: 40px auto;
+    margin: 30px auto;
 }
 
 .label-perfect-for {
@@ -138,6 +141,7 @@
     font-size: 28px;
     line-height: 110%;
     letter-spacing: -0.02em;
+    margin-bottom: 50px;
 }
 
 .label-includes-options {
@@ -145,6 +149,11 @@
     line-height: 110%;
     letter-spacing: -0.03em;
     color: #1D1D1F;
+    margin: 0;
+}
+
+.label-includes-options-link {
+    margin: 30px auto;
 }
 
 .product-img {
