@@ -6,6 +6,7 @@
     max-width: 1354px;
     margin: auto;
     flex-wrap: wrap;
+    padding-bottom: 50px;
 }
 
 .product-comparison-block {
@@ -159,26 +160,22 @@
 }
 
 .product-color-options {
-    display: block;
+    display: flex;
     width: 100%;
+    justify-content: center;
+    gap: 10px;
 }
 
 .pill-swatch {
-    background-color: rgb(var(--color-foreground));
-    color: rgb(var(--color-background));
-    border: var(--variant-pills-border-width) solid rgba(var(--color-foreground),var(--variant-pills-border-opacity));
-    border-radius: var(--variant-pills-radius);
-    display: inline-block;
-    margin: 0.7rem 0.5rem 0.2rem 0;
-    padding: 1rem 2rem;
-    font-size: 1.4rem;
-    letter-spacing: .1rem;
-    line-height: 1;
-    text-align: center;
-    transition: border var(--duration-short) ease;
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block !important;
+    transition: .3s opacity ease;
+}
+
+.pill-swatch:hover {
+    opacity: .7;
 }
 
 .main-page-title.page-title.h0 {
