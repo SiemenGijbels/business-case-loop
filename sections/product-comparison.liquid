@@ -4,184 +4,165 @@
   media="print"
   onload="this.media='all'">
 
-<div class="product-comparison">
+<div class="product-comparison-grid">
   {% for block in section.blocks %}
     <div class="product-comparison-block">
-      <h3 class="product-comparison-block-title">Loop<br>{{ block.settings.product.title }}</h3>
+      <div class="product">
+        <h3 class="product-comparison-block-title">Loop<br>{{ block.settings.product.title }}</h3>
 
-      {% if block.settings.product.featured_image %}
-        <img
-          class="product-img"
-          loading="lazy"
-          height="221"
-          width="235"
-          src="{{ block.settings.product.featured_image | image_url: width: 500 }}"
-          alt="Loop {{ block.settings.product.title }}">
-      {% endif %}
+        {% if block.settings.product.featured_image %}
+          <img
+            class="product-img"
+            loading="lazy"
+            height="221"
+            width="235"
+            src="{{ block.settings.product.featured_image | image_url: width: 500 }}"
+            alt="Loop {{ block.settings.product.title }}">
+        {% endif %}
 
-      <div class="product-color-options">
-        {% for option in block.settings.product.options %}
-          {% for variant in block.settings.product.variants %}
-            <a
-              href="{{ block.settings.product.url }}?variant={{ variant.id }}"
-              class="pill-swatch"
-              style='background-image: url({{ variant.metafields.custom.color_swatch.value | image_url: width: 50 }});'></a>
+        <div class="product-color-options">
+          {% for option in block.settings.product.options %}
+            {% for variant in block.settings.product.variants %}
+              <a
+                href="{{ block.settings.product.url }}?variant={{ variant.id }}"
+                class="pill-swatch"
+                style='background-image: url({{ variant.metafields.custom.color_swatch.value | image_url: width: 50 }});'></a>
+            {% endfor %}
           {% endfor %}
-        {% endfor %}
-      </div>
+        </div>
 
-      <h3 class="product-comparison-block-price">{{ block.settings.product.price | money }}</h3>
+        <h3 class="product-comparison-block-price">{{ block.settings.product.price | money }}</h3>
 
-      <h3 class="product-comparison-block-keyword">{{ block.settings.keyword }}</h3>
-      <p class="product-comparison-block-desc">{{ block.settings.description }}</p>
+        <h3 class="product-comparison-block-keyword">{{ block.settings.keyword }}</h3>
+        <p class="product-comparison-block-desc">{{ block.settings.description }}</p>
 
-      <a class="product-comparison-block-button button button--primary" href="{{ block.settings.product.url }}">Buy now</a>
+        <a class="product-comparison-block-button button button--primary" href="{{ block.settings.product.url }}">Buy now</a>
 
-      <p>
-        <a class="learn-more" href="{{ block.settings.product.url }}">Learn more</a>
-      </p>
-    </div>
-  {% endfor %}
-
-  <hr class="divider">
-
-  {% for block in section.blocks %}
-    <div class="product-comparison-block product-comparison-block-padded">
-      <p class="product-comparison-block-reduction">up to<br>
-        <span class="noise-reduction-amount">{{ block.settings.dbreduction }}</span><br>
-        {% if block.settings.filtered %}filtered{% endif %}
-        noise reduction</p>
-      <hr class="divider divider-small">
-      <div class="reduction-desc">{{ block.settings.reductiondesc }}</div>
-    </div>
-  {% endfor %}
-
-  <hr class="divider">
-
-  {% for block in section.blocks %}
-    <div class="product-comparison-block product-comparison-block-padded">
-      <h4 class="comparison-subheading">Perfect for</h4>
-      {% if block.settings.img1 %}
-        <img
-          class="icon-perfect-for"
-          loading="lazy"
-          height="60"
-          width="60"
-          src="{{ block.settings.img1 | image_url: width: 120 }}"
-          alt="{{ block.settings.img1desc }} icon">
-        <p class="label-perfect-for">{{ block.settings.img1desc }}</p>
-      {% endif %}
-      {% if block.settings.img2 %}
-        <img
-          class="icon-perfect-for"
-          loading="lazy"
-          height="60"
-          width="60"
-          src="{{ block.settings.img2 | image_url: width: 120 }}"
-          alt="{{ block.settings.img2desc }} icon">
-        <p class="label-perfect-for">{{ block.settings.img2desc }}</p>
-      {% endif %}
-      {% if block.settings.img3 %}
-        <img
-          class="icon-perfect-for"
-          loading="lazy"
-          height="60"
-          width="60"
-          src="{{ block.settings.img3 | image_url: width: 120 }}"
-          alt="{{ block.settings.img3desc }} icon">
-        <p class="label-perfect-for">{{ block.settings.img3desc }}</p>
-      {% endif %}
-      {% if block.settings.img4 %}
-        <img
-          class="icon-perfect-for"
-          loading="lazy"
-          height="60"
-          width="60"
-          src="{{ block.settings.img4 | image_url: width: 120 }}"
-          alt="{{ block.settings.img4desc }} icon">
-        <p class="label-perfect-for">{{ block.settings.img4desc }}</p>
-      {% endif %}
-    </div>
-  {% endfor %}
-
-  <hr class="divider">
-
-  {% for block in section.blocks %}
-    <div class="product-comparison-block product-comparison-block-padded">
-      <h4 class="comparison-subheading">Included</h4>
-
-      {% if block.settings.includes1 %}
-        <p class="label-includes-options">{{ block.settings.includes1 }}</p>
-      {% endif %}
-      {% if block.settings.includes2 %}
-        <p class="label-includes-options">{{ block.settings.includes2 }}</p>
-      {% endif %}
-
-      <hr class="divider divider-small">
-
-      <h4 class="comparison-subheading">Optional extras</h4>
-
-      {% if block.settings.optionalextras1 %}
-        <p class="label-includes-options">{{ block.settings.optionalextras1 }}</p>
-      {% endif %}
-      {% if block.settings.optionalextras2 %}
-        <p class="label-includes-options">{{ block.settings.optionalextras2 }}</p>
-      {% endif %}
-      {% if block.settings.optionalextraslink != null %}
-        <p class="label-includes-options label-includes-options-link">
-          <a class="learn-more" href="{{ block.settings.optionalextraslink.url }}">Discover {{ block.settings.optionalextraslink.title }}</a>
+        <p>
+          <a class="learn-more" href="{{ block.settings.product.url }}">Learn more</a>
         </p>
-      {% endif %}
-    </div>
-  {% endfor %}
-
-  <hr class="divider">
-
-  {% for block in section.blocks %}
-    <div class="product-comparison-block product-comparison-block-padded">
-      <h4 class="comparison-subheading">Product details</h4>
-      {% if block.settings.productdetailsimg %}
-        <img
-          class="product-details-img"
-          loading="lazy"
-          height="221"
-          width="235"
-          src="{{ block.settings.productdetailsimg | image_url: width: 500 }}"
-          alt="Loop {{ block.settings.product.title }} details">
-      {% endif %}
-    </div>
-  {% endfor %}
-
-  <hr class="divider">
-
-  {% for block in section.blocks %}
-    <div class="product-comparison-block">
-      <h3 class="product-comparison-block-title">Loop<br>{{ block.settings.product.title }}</h3>
-
-      {% if block.settings.product.featured_image %}
-        <img
-          class="product-img"
-          loading="lazy"
-          height="221"
-          width="235"
-          src="{{ block.settings.product.featured_image | image_url: width: 500 }}"
-          alt="Loop {{ block.settings.product.title }}">
-      {% endif %}
-
-      <div class="product-color-options">
-        {% for option in block.settings.product.options %}
-          {% for variant in block.settings.product.variants %}
-            <a
-              href="{{ block.settings.product.url }}?variant={{ variant.id }}"
-              class="pill-swatch"
-              style='background-image: url({{ variant.metafields.custom.color_swatch.value | image_url: width: 50 }});'></a>
-          {% endfor %}
-        {% endfor %}
       </div>
 
-      <h3 class="product-comparison-block-price">{{ block.settings.product.price | money }}</h3>
+      <div class="reduction">
+        <p class="product-comparison-block-reduction">up to<br>
+          <span class="noise-reduction-amount">{{ block.settings.dbreduction }}</span><br>
+          {% if block.settings.filtered %}filtered{% endif %}
+          noise reduction</p>
+        <hr class="divider">
+        <div class="reduction-desc">{{ block.settings.reductiondesc }}</div>
+      </div>
 
-      <a class="product-comparison-block-button button button--primary" href="{{ block.settings.product.url }}">Buy now</a>
+      <div class="perfect-for">
+        <h4 class="comparison-subheading">Perfect for</h4>
+        {% if block.settings.img1 %}
+          <img
+            class="icon-perfect-for"
+            loading="lazy"
+            height="60"
+            width="60"
+            src="{{ block.settings.img1 | image_url: width: 120 }}"
+            alt="{{ block.settings.img1desc }} icon">
+          <p class="label-perfect-for">{{ block.settings.img1desc }}</p>
+        {% endif %}
+        {% if block.settings.img2 %}
+          <img
+            class="icon-perfect-for"
+            loading="lazy"
+            height="60"
+            width="60"
+            src="{{ block.settings.img2 | image_url: width: 120 }}"
+            alt="{{ block.settings.img2desc }} icon">
+          <p class="label-perfect-for">{{ block.settings.img2desc }}</p>
+        {% endif %}
+        {% if block.settings.img3 %}
+          <img
+            class="icon-perfect-for"
+            loading="lazy"
+            height="60"
+            width="60"
+            src="{{ block.settings.img3 | image_url: width: 120 }}"
+            alt="{{ block.settings.img3desc }} icon">
+          <p class="label-perfect-for">{{ block.settings.img3desc }}</p>
+        {% endif %}
+        {% if block.settings.img4 %}
+          <img
+            class="icon-perfect-for"
+            loading="lazy"
+            height="60"
+            width="60"
+            src="{{ block.settings.img4 | image_url: width: 120 }}"
+            alt="{{ block.settings.img4desc }} icon">
+          <p class="label-perfect-for">{{ block.settings.img4desc }}</p>
+        {% endif %}
+      </div>
+
+      <div class="includes">
+        <h4 class="comparison-subheading">Included</h4>
+
+        {% if block.settings.includes1 %}
+          <p class="label-includes-options">{{ block.settings.includes1 }}</p>
+        {% endif %}
+        {% if block.settings.includes2 %}
+          <p class="label-includes-options">{{ block.settings.includes2 }}</p>
+        {% endif %}
+
+        <hr class="divider">
+
+        <h4 class="comparison-subheading">Optional extras</h4>
+
+        {% if block.settings.optionalextras1 %}
+          <p class="label-includes-options">{{ block.settings.optionalextras1 }}</p>
+        {% endif %}
+        {% if block.settings.optionalextras2 %}
+          <p class="label-includes-options">{{ block.settings.optionalextras2 }}</p>
+        {% endif %}
+        {% if block.settings.optionalextraslink != null %}
+          <p class="label-includes-options label-includes-options-link">
+            <a class="learn-more" href="{{ block.settings.optionalextraslink.url }}">Discover {{ block.settings.optionalextraslink.title }}</a>
+          </p>
+        {% endif %}
+      </div>
+
+      <div class="details">
+        <h4 class="comparison-subheading">Product details</h4>
+        {% if block.settings.productdetailsimg %}
+          <img
+            class="product-details-img"
+            loading="lazy"
+            height="221"
+            width="235"
+            src="{{ block.settings.productdetailsimg | image_url: width: 500 }}"
+            alt="Loop {{ block.settings.product.title }} details">
+        {% endif %}
+      </div>
+
+      <div class="product-last">
+        <h3 class="product-comparison-block-title">Loop<br>{{ block.settings.product.title }}</h3>
+        {% if block.settings.product.featured_image %}
+          <img
+            class="product-img"
+            loading="lazy"
+            height="221"
+            width="235"
+            src="{{ block.settings.product.featured_image | image_url: width: 500 }}"
+            alt="Loop {{ block.settings.product.title }}">
+        {% endif %}
+
+        <div class="product-color-options">
+          {% for option in block.settings.product.options %}
+            {% for variant in block.settings.product.variants %}
+              <a
+                href="{{ block.settings.product.url }}?variant={{ variant.id }}"
+                class="pill-swatch"
+                style='background-image: url({{ variant.metafields.custom.color_swatch.value | image_url: width: 50 }});'></a>
+            {% endfor %}
+          {% endfor %}
+        </div>
+
+        <h3 class="product-comparison-block-price">{{ block.settings.product.price | money }}</h3>
+
+        <a class="product-comparison-block-button button button--primary" href="{{ block.settings.product.url }}">Buy now</a>
+      </div>
     </div>
   {% endfor %}
 </div>
