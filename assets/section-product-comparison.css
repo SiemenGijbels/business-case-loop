@@ -12,7 +12,7 @@
 .product-comparison-block {
     width: 100%;
     text-align: center;
-    min-width: 200px;
+    min-width: 320px;
 }
 
 .product-comparison-block-padded {
@@ -238,6 +238,9 @@
     }
     .product-comparison-block .reduction {
         height: 450px;
+    }
+    .label-includes-options {
+        padding: 0 15px;
     }
 }
 
